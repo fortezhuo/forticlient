@@ -1,4 +1,4 @@
-require("dotenv").config({ path: `/Users/forte/Workspace/FZ/vpn/.env` });
+require("dotenv").config()
 
 const subProcess = require('child_process')
 const puppeteer = require('puppeteer');
