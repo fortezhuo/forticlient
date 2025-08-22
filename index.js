@@ -1,7 +1,7 @@
 require("dotenv").config({ path: `/Users/forte/Workspace/FZ/vpn/.env` });
 
 const subProcess = require('child_process')
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const fs = require("fs")
 
 const initialUrl = `https://${process.env.VPN_HOST}/remote/saml/start`
@@ -15,11 +15,14 @@ const waitForSelectorTimeout = 2000;
 
 ;(async function login(url) {
   console.log("FortiClient VPN initiated ...\n")
-  const browser = await puppeteer.launch({ headless: false,
+    const browser = await puppeteer.launch({
+    headless: false,
     args: [ '--ignore-certificate-errors',"--ignore-certificate-errors-spki-list",
       '--incognito',
-     ]
-  });
+     ],
+    executablePath:
+      "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome",
+  })
 
   const context = browser.defaultBrowserContext()
   const pages = await context.pages()
@@ -102,7 +105,7 @@ const waitForSelectorTimeout = 2000;
   } catch (error) {
     console.info("Error:", error);
   } finally {
-    await browser.close();
+//    await browser.close();
   }
 })(initialUrl)
 

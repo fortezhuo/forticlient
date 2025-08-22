@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "puppeteer": "^22.1.0"
+    "puppeteer": "^22.1.0",
+    "puppeteer-core": "^24.17.0"
   }
 }
